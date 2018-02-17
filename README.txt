@@ -31,5 +31,4 @@ resource file.
 -------------------------------------------------------
             MS docx location
 -------------------------------------------------------
-The .docx file for the procedure is located in:
-Z:\PQA\Test_Engineering\Manufacturing_Test\23500002_prod_label_maker\ms_doc_procedure
+Need to make documents
