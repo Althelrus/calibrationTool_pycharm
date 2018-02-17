@@ -387,8 +387,26 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuAbout">
+    <property name="title">
+     <string>More</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="actionProcedure"/>
+   </widget>
+   <addaction name="menuAbout"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
+   </property>
+  </action>
+  <action name="actionProcedure">
+   <property name="text">
+    <string>Procedure</string>
+   </property>
+  </action>
  </widget>
  <resources>
   <include location="../graphics/images.qrc"/>
