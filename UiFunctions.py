@@ -25,11 +25,10 @@ class ExtraUiFunctions(object):
         proc_viewer.settings().setAttribute(QWebSettings.PluginsEnabled, True)
         # Load the Procedure in .htm format into the proc_viewer.
         proc_viewer.load(QUrl('file:///' + os.getcwd() + '/htm_files/' + procedure_part_num))
-        print 'LOADING PROCEDURE', os.getcwd() + '/htm_files/'+procedure_part_num
+        # print 'LOADING PROCEDURE', os.getcwd() + '/htm_files/'+procedure_part_num
         if not os.path.exists(os.getcwd() + '/htm_files/' + procedure_part_num ):
             self.pop_message('OK', 'Procedure: {} Not Found !!!!'.format(os.getcwd() + '/htm_files/' +procedure_part_num ))
             return
-        #test_procedure_window.show()
         # TODO Exception created, may use QDialog
         test_procedure_window.exec_()
 
