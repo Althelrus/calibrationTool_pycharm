@@ -5,7 +5,7 @@ The resource file that is created with the designer must be converted
 to .py so the UI.py can import it.
 
 C:\Python27\Lib\site-packages\PyQt4>
-pyrcc4.exe -o fm_printer_rc.py fm_printer.qrc
+pyrcc4.exe -o file.py file.qrc
 
 NOTE: The graphic files are only needed for the QTDesigner
       resource file, location is /resource_files.
@@ -17,7 +17,7 @@ Save the .ui file in:
     Example:
     C:\Python27\Lib\site-packages\PyQt4\uic
 Execute: python pyuic.py <file_name.ui> -o <file_name.py>
-  python pyuic.py fmi_label_creator_ui.ui -o fmi_label_creator_ui.py
+  python pyuic.py file.ui -o file.py
 
 ------------------------------------------------------
           To Compile the .exe file:
