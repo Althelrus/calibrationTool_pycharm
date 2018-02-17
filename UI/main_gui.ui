@@ -146,13 +146,6 @@
       <string>Back</string>
      </property>
     </widget>
-    <zorder>admin_btn</zorder>
-    <zorder>get_data_btn</zorder>
-    <zorder>sensor1_btn</zorder>
-    <zorder>sensor2_btn</zorder>
-    <zorder>boyuancy_data_btn</zorder>
-    <zorder>back_btn</zorder>
-    <zorder>loadingFrame</zorder>
    </widget>
    <widget class="QFrame" name="logFrame">
     <property name="geometry">
@@ -220,7 +213,7 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
+      <string notr="true">background-color: rgb(0, 255, 0);</string>
      </property>
      <property name="text">
       <string>Start</string>
