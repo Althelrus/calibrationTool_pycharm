@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="fc19a321-d56c-4820-88cf-de1ab35ccefa" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/calibrationTool_pycharm.iml" />
+=======
+    <list default="true" id="fc19a321-d56c-4820-88cf-de1ab35ccefa" name="Default" comment="Added GUI Functions and added Information tab that holds procedure and about.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/UiFunctions.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Pyproject.iml" afterPath="$PROJECT_DIR$/.idea/Pyproject.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GUIHandler.py" afterPath="$PROJECT_DIR$/GUIHandler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
+>>>>>>> parent of a93f6fc... Added GUI Functions and added Information tab that holds procedure and about.
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -313,6 +323,7 @@
       <option name="project" value="LOCAL" />
       <updated>1518906634905</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00008" summary="Added GUI Functions and added Information tab that holds procedure and about.">
       <created>1518908525924</created>
       <option name="number" value="00008" />
@@ -335,6 +346,9 @@
       <updated>1518909224717</updated>
     </task>
     <option name="localTasksCounter" value="11" />
+=======
+    <option name="localTasksCounter" value="8" />
+>>>>>>> parent of a93f6fc... Added GUI Functions and added Information tab that holds procedure and about.
     <servers />
   </component>
   <component name="TodoView" selected-index="3">
