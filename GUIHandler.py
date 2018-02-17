@@ -9,6 +9,7 @@ import logging
 
 from PyQt4 import QtGui
 from UI.main_gui import Ui_MainWindow
+from UiFunctions import ExtraUiFunctions
 from main import Balance
 
 
@@ -24,7 +25,7 @@ class MainOverride(QtGui.QMainWindow):
             event.accept()
 
 
-class UIHandler(Ui_MainWindow, Balance):
+class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
     app = QtGui.QApplication(sys.argv)
 
     def __init__(self):
@@ -50,6 +51,14 @@ class UIHandler(Ui_MainWindow, Balance):
         self.recalibration_btn.clicked.connect(self.start_test)
         self.settings_btn.clicked.connect(self.show_setting)
         self.back_btn.clicked.connect(self.show_main_screen)
+
+        # Information Buttons
+        self.actionAbout.triggered.connect(self.about)
+        self.actionProcedure.triggered.connect(self.show_the_procedure)
+
+    def show_the_procedure(self):
+        pn_num = "balance_procedure"
+        self.show_procedure(pn_num)
 
     def about(self):
         QtGui.QMessageBox.about(self.mainWindow, "About Balancing Test",

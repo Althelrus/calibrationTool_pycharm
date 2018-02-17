@@ -7,8 +7,10 @@ import os
 import time
 import logging
 
+# Shared UI functions
+from UiFunctions import ExtraUiFunctions
 
-class Balance(object):
+class Balance(ExtraUiFunctions):
     def __init__(self):
         pass
 
