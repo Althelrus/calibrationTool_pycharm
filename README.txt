@@ -1,7 +1,4 @@
-FM Product Label Ceator
-Fiber Mountain Part Number: 235-00002
-
------------------------------------------------------        
+-----------------------------------------------------
           Convert PTQT4 resource file .rc to .py
 ------------------------------------------------------
 The resource file that is created with the designer must be converted
