@@ -9,8 +9,8 @@ import logging
 
 from PyQt4 import QtGui
 from UI.main_gui import Ui_MainWindow
-from UiFunctions import ExtraUiFunctions
-from main import Balance
+from ui_util import ExtraUiFunctions
+from balance_util import Balance
 
 
 class MainOverride(QtGui.QMainWindow):
@@ -102,11 +102,3 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
 
     def print_to_log(self, balancing_info):
         pass
-
-
-if __name__ == '__main__':
-    QtGui.QApplication.setStyle('cleanlooks ')
-    ex_main = UIHandler()
-    # print help(ex_main)
-    # print '----------------'
-    sys.exit(UIHandler.app.exec_())
