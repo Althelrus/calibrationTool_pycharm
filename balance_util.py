@@ -31,6 +31,3 @@ class Balance(ExtraUiFunctions):
 
     def find_center_of_mass(self):
         pass
-
-# if __name__ == '__main__':
-#
