@@ -50,7 +50,19 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.start_calibration_btn.clicked.connect(self.start_test)
         self.recalibration_btn.clicked.connect(self.start_test)
         self.settings_btn.clicked.connect(self.show_setting)
-        self.back_btn.clicked.connect(self.show_main_screen)
+        self.back_btn.clicked.connect(self.show_main_screen) #check sender to return person to correct screen
+
+        #link Settings Buttons
+        self.set_calibration_weight_btn.clicked.connect(self.set_weight)
+        self.boyuancy_data_btn.hide()
+        self.get_data_btn.clicked.connect(self.activate_localhost_download)
+        self.sensor1_btn.clicked.connect(self.set_sensor)
+        self.sensor2_btn.clicked.connect(self.set_sensor)
+        self.saliny_btn.clicked.connect(self.set_sensor)
+        self.admin_btn.clicked.connect(self.admin_state)
+
+        # link settings chbox
+        # self.salinity_cbox.connect()
 
         # Information Buttons
         self.actionAbout.triggered.connect(self.about)
@@ -102,3 +114,17 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
 
     def print_to_log(self, balancing_info):
         pass
+
+    def admin_state(self):
+        pass
+
+    def set_weight(self):
+        pass
+
+    def activate_localhost_download(self):
+        pass
+
+    def set_sensor(self):
+        pass
+
+
