@@ -22,6 +22,7 @@ NOTE: The graphic files are only needed for the QTDesigner
 Save the .ui file in:
     Example:
     C:\Python27\Lib\site-packages\PyQt4\uic
+   From file directory:  python3 -m PyQt5.uic.pyuic -x  <file_name.ui> -o <file_name.py>
 Execute: python pyuic.py <file_name.ui> -o <file_name.py>
   python pyuic.py file.ui -o file.py
 

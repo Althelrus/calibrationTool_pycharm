@@ -7,7 +7,7 @@ import os
 import time
 import logging
 
-from PyQt4 import QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 from UI.main_gui import Ui_MainWindow
 from ui_util import ExtraUiFunctions
 from balance_util import Balance
@@ -103,6 +103,7 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.logFrame.show()
         self.loadingFrame.hide()
         self.settingFrame.hide()
+        self.print_to_log()
 
     def show_loading(self):
         self.update_progress_bar(0)

@@ -1,7 +1,7 @@
 
 import os
 import sys
-from PyQt4 import QtGui
+from PyQt5 import QtCore, QtGui, QtWidgets
 from ui_handler import UIHandler
 
 if __name__ == '__main__':

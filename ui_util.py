@@ -1,8 +1,8 @@
 import os
-from PyQt4.QtCore import QUrl
-from PyQt4 import QtGui
-from PyQt4.QtWebKit import *
-
+import PyQt5
+from PyQt5.QtCore import QUrl
+from PyQt5 import QtGui
+from PyQt5.QtWidgets import QApplication, QWidget
 
 class ExtraUiFunctions(object):
     def show_procedure(self, procedure_part_num):
