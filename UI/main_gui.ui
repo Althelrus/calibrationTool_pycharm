@@ -197,7 +197,8 @@
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+      <string notr="true">background-color: rgba(255, 255, 255, 0);
+background-image: url(:/images/gear.png);</string>
      </property>
      <property name="text">
       <string/>
@@ -256,6 +257,7 @@
     </widget>
     <zorder>calibration_progbar</zorder>
     <zorder>settingFrame</zorder>
+    <zorder>settingFrame</zorder>
    </widget>
    <widget class="QFrame" name="settingFrame">
     <property name="geometry">
@@ -297,10 +299,10 @@
     <widget class="QPushButton" name="get_data_btn">
      <property name="geometry">
       <rect>
-       <x>300</x>
-       <y>390</y>
+       <x>310</x>
+       <y>380</y>
        <width>161</width>
-       <height>20</height>
+       <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -434,32 +436,6 @@
       <string>Save Calibration</string>
      </property>
     </widget>
-    <widget class="QTextEdit" name="textEdit">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>60</y>
-       <width>81</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
-     </property>
-    </widget>
-    <widget class="QTextEdit" name="textEdit_2">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>110</y>
-       <width>81</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
@@ -479,7 +455,7 @@
       <string>  Input Weight </string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="salinity_mode_1">
+    <widget class="QRadioButton" name="salinity_mode_1">
      <property name="geometry">
       <rect>
        <x>590</x>
@@ -492,10 +468,13 @@
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
-      <string>Deep Water</string>
+      <string>Deep Water: 34.9 PPM</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
      </property>
     </widget>
-    <widget class="QCheckBox" name="salinity_mode_2">
+    <widget class="QRadioButton" name="salinity_mode_2">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -511,10 +490,10 @@
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
-      <string>Coastal Water</string>
+      <string>Coastal Water: 31 PPM</string>
      </property>
     </widget>
-    <widget class="QCheckBox" name="salinity_mode_3">
+    <widget class="QRadioButton" name="salinity_mode_3">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -530,7 +509,7 @@
       <string notr="true">background-color: rgb(255, 255, 255);</string>
      </property>
      <property name="text">
-      <string>Fresh Water</string>
+      <string>Fresh Water: 0 PPM</string>
      </property>
     </widget>
     <widget class="QLabel" name="program_mode_lbl_2">
@@ -555,7 +534,7 @@
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QCheckBox" name="salinity_mode_4">
+    <widget class="QRadioButton" name="salinity_mode_4">
      <property name="enabled">
       <bool>true</bool>
      </property>
@@ -574,26 +553,13 @@
       <string>Other</string>
      </property>
     </widget>
-    <widget class="QLineEdit" name="salinity_input">
-     <property name="geometry">
-      <rect>
-       <x>590</x>
-       <y>250</y>
-       <width>141</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(255, 255, 255);</string>
-     </property>
-    </widget>
     <widget class="QLabel" name="label_2">
      <property name="geometry">
       <rect>
        <x>500</x>
        <y>250</y>
        <width>81</width>
-       <height>21</height>
+       <height>41</height>
       </rect>
      </property>
      <property name="styleSheet">
@@ -638,6 +604,61 @@
       <string>Set Cell 2</string>
      </property>
     </widget>
+    <widget class="QSpinBox" name="lb1_input_sbox">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>60</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="lb2_input_sbox">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>110</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QDoubleSpinBox" name="salinity_input_dsbox">
+     <property name="geometry">
+      <rect>
+       <x>590</x>
+       <y>250</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="screen_calibrate">
+     <property name="geometry">
+      <rect>
+       <x>50</x>
+       <y>230</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Run Calibrate Screen</string>
+     </property>
+    </widget>
     <zorder>admin_btn</zorder>
     <zorder>get_data_btn</zorder>
     <zorder>back_btn</zorder>
@@ -645,22 +666,23 @@
     <zorder>program_mode_lbl</zorder>
     <zorder>foam_cbox</zorder>
     <zorder>save_cailbration</zorder>
-    <zorder>textEdit</zorder>
-    <zorder>textEdit_2</zorder>
     <zorder>label</zorder>
     <zorder>salinity_mode_1</zorder>
     <zorder>salinity_mode_2</zorder>
     <zorder>salinity_mode_3</zorder>
     <zorder>program_mode_lbl_2</zorder>
     <zorder>salinity_mode_4</zorder>
-    <zorder>salinity_input</zorder>
     <zorder>label_2</zorder>
     <zorder>sensor1_set_btn</zorder>
     <zorder>sensor2_set_btn</zorder>
     <zorder>sensor2_btn</zorder>
     <zorder>sensor1_btn</zorder>
+    <zorder>lb1_input_sbox</zorder>
+    <zorder>lb2_input_sbox</zorder>
+    <zorder>salinity_input_dsbox</zorder>
+    <zorder>screen_calibrate</zorder>
    </widget>
-   <widget class="QFrame" name="mission_param">
+   <widget class="QFrame" name="salinity_ask_frame">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -681,10 +703,315 @@
     <property name="lineWidth">
      <number>2</number>
     </property>
+    <widget class="QDoubleSpinBox" name="salinity_input_dsbox_2">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>200</y>
+       <width>141</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="salinity_mode_5">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>147</y>
+       <width>141</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Coastal Water: 31 PPM</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="salinity_mode_6">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>163</y>
+       <width>141</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Fresh Water: 0 PPM</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="salinity_mode_7">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>179</y>
+       <width>141</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Other</string>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="salinity_mode_8">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>130</y>
+       <width>141</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Deep Water: 34.9 PPM</string>
+     </property>
+     <property name="checked">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>true</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="program_mode_lbl_3">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>110</y>
+       <width>141</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::WinPanel</enum>
+     </property>
+     <property name="text">
+      <string>Salinty Mode</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_3">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>200</y>
+       <width>81</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::WinPanel</enum>
+     </property>
+     <property name="text">
+      <string>  Input Salinity</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="submit_salinity">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>300</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Submit</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="calibration_ask_frame">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>781</width>
+      <height>421</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: qradialgradient(spread:repeat, cx:0.5, cy:0.5, radius:0.7, fx:0.5, fy:0.5, stop:0 rgba(0, 169, 255, 147), stop:0.497326 rgba(0, 0, 0, 147), stop:1 rgba(0, 169, 255, 147));</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
+    <widget class="QSpinBox" name="lb1_input_sbox_2">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>170</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="sensor1_set_btn_2">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>170</y>
+       <width>139</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Set Cell 1</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="sensor2_btn_2">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>220</y>
+       <width>139</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Calibrate load cell 2</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="sensor1_btn_2">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>170</y>
+       <width>139</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Calibrate load cell 1</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="sensor2_set_btn_2">
+     <property name="geometry">
+      <rect>
+       <x>260</x>
+       <y>220</y>
+       <width>139</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Set Cell 2</string>
+     </property>
+    </widget>
+    <widget class="QSpinBox" name="lb2_input_sbox_2">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>220</y>
+       <width>81</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label_4">
+     <property name="geometry">
+      <rect>
+       <x>420</x>
+       <y>140</y>
+       <width>81</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="frameShape">
+      <enum>QFrame::WinPanel</enum>
+     </property>
+     <property name="text">
+      <string>  Input Weight </string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="submit_calibration">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>300</y>
+       <width>211</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Submit</string>
+     </property>
+    </widget>
+    <zorder>sensor2_set_btn_2</zorder>
+    <zorder>lb1_input_sbox_2</zorder>
+    <zorder>sensor1_set_btn_2</zorder>
+    <zorder>sensor2_btn_2</zorder>
+    <zorder>sensor1_btn_2</zorder>
+    <zorder>lb2_input_sbox_2</zorder>
+    <zorder>label_4</zorder>
+    <zorder>submit_calibration</zorder>
    </widget>
    <zorder>loadingFrame</zorder>
    <zorder>settingFrame</zorder>
-   <zorder>mission_param</zorder>
+   <zorder>salinity_ask_frame</zorder>
+   <zorder>calibration_ask_frame</zorder>
    <zorder>logFrame</zorder>
    <zorder>mainFrame</zorder>
   </widget>

@@ -1,11 +1,9 @@
-
-import os
 import sys
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QApplication
 from ui_handler import UIHandler
 
 if __name__ == '__main__':
-    QtGui.QApplication.setStyle('cleanlooks ')
+    # QApplication.setStyle('cleanlooks ')
     ex_main = UIHandler()
     # print help(ex_main)
     # print '----------------'

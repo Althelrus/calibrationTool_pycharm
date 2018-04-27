@@ -6,19 +6,18 @@ import sys
 import os
 import time
 import logging
-from loadCell_util.ABE_ADCPi import ADCPi
-from loadCell_util.ABE_helpers import ABEHelpers
+#from loadCell_util.ABE_ADCPi import ADCPi
+#from loadCell_util.ABE_helpers import ABEHelpers
 
 # Shared UI functions
 from ui_handler import ExtraUiFunctions
 
 class Balance(ExtraUiFunctions):
     def __init__(self):
-        self.calibration_bit = False
 
-        i2c_helper = ABEHelpers()
-        bus = i2c_helper.get_smbus()
-        self.adc = ADCPi(bus, 0x68, 0x69, 18)
+        #i2c_helper = ABEHelpers()
+        #bus = i2c_helper.get_smbus()
+        #self.adc = ADCPi(bus, 0x68, 0x69, 18)
         self.LS_pin = 5
         self.RS_pin = 8
 
@@ -56,10 +55,7 @@ class Balance(ExtraUiFunctions):
         return self.to_string()
 
     def to_string(self):
-        if self.h_moment > .5:
-            return "Add " + self.find_calibration_weight() + " ounces to the forward"
-        elif self.h_moment < .5:
-            return "Add " + self.find_calibration_weight() + " ounces to the back"
+        pass
     # ------------------------------------------------------------------------------------------------------------------
 
     # ------------------------------------------------------------------------------------------------------------------
@@ -95,10 +91,12 @@ class Balance(ExtraUiFunctions):
     # Read Sensors
     # ------------------------------------------------------------------------------------------------------------------
     def get_load_cell_left(self):
-        return self.adc.read_voltage(self.LS_pin)
+        pass
+        #return self.adc.read_voltage(self.LS_pin)
 
     def get_load_cell_right(self):
-        return self.adc.read_voltage(self.RS_pin)
+        pass
+        #return self.adc.read_voltage(self.RS_pin)
     # ------------------------------------------------------------------------------------------------------------------
 
     # ------------------------------------------------------------------------------------------------------------------
