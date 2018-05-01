@@ -34,12 +34,14 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
 
         # ________ P R O C E D U R E -- B U I L D -- R E V S _____
         self.version = '3.0'
-        self.git_build = '0 '
+        self.git_build = '5'
         # ________________________________________________________
 
         # Check Bits
-        self.calibration_bit = True
-        self.salinity_bit = True
+        self.calibration_bit_left = True
+        self.calibration_bit_right = True
+        self.variable_bit = True
+        self.last_frame = ""
 
         # Start Main Window
         self.mainWindow = MainOverride()
@@ -49,21 +51,20 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.loadingFrame.hide()
         self.settingFrame.hide()
         self.calibration_ask_frame.hide()
-        self.salinity_ask_frame.hide()
+        self.variable_adj_frame.hide()
         self.update_progress_bar(0)
         self.mainWindow.show()
 
+        # todo commented objects from the gui for the sensor calibration
         # Link Calibration Frame
-        # self.sensor1_btn_2.clicked.connect()
-        # self.sensor2_btn_2.clicked.connect()
-        # self.sensor1_set_btn_2.clicked.connect()
-        # self.sensor2_set_btn_2.clicked.connect()
-        # self.lb1_input_sbox_2.text()
-        # self.lb2_input_sbox_2.text()
-        self.submit_calibration.clicked.connect(self.sub_cali)
+        self.sensor1_set_btn.clicked.connect(self.set_cali_weight)
+        self.sensor2_set_btn.clicked.connect(self.set_cali_weight)
+        self.sensor1_tare_btn.clicked.connect(self.set_tare)
+        self.sensor2_tare_btn.clicked.connect(self.set_tare)
+        self.submit_calibration.clicked.connect(self.sub_last)
 
-        # Link Salinity Frame
-        self.submit_salinity.clicked.connect(self.sub_sal)
+        # Link Variables Frame
+        self.submit_variables.clicked.connect(self.save_variables)
 
         # Link Buttons
         self.start_calibration_btn.clicked.connect(self.start_test)
@@ -72,11 +73,9 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.back_btn.clicked.connect(self.show_main_screen)  # Check sender to return person to correct screen
 
         # link Settings Buttons
-        # self.set_calibration_weight_btn.clicked.connect(self.set_weight) # Calibration
-        # self.set_calibration
         self.get_data_btn.clicked.connect(self.activate_localhost_download)
-        self.sensor1_btn.clicked.connect(self.set_sensor)
-        self.sensor2_btn.clicked.connect(self.set_sensor)
+        self.variable_adj_btn.clicked.connect(self.show_variable_ask)
+        self.sensor_set_btn.clicked.connect(self.show_calibration_ask)
         self.screen_calibrate.clicked.connect(self.screen_calibrate_script)
         self.admin_btn.clicked.connect(self.admin_state)
 
@@ -85,76 +84,62 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.actionProcedure.triggered.connect(self.show_the_procedure)
 
         # Check Box Stats
-        self.ask_for_salinity_state = True
-        self.save_calibration_state = False
+        self.variable_ask_state = True
+        self.save_calibration_state = True
         self.foam_state = False
 
-        # radio box states
-        self.deep = True
-        self.deep_constant = 34.9
-        self.fresh = False
-        self.fresh_constant = 0
-        self.coastal = False
-        self.coastal_constant = 31
-        self.other = False
-        self.current_salinity_level = 0
-        self.set_salinity_state()
+        # TODO Coming Soon
+        self.admin_btn.hide()
+        self.get_data_btn.hide()
 
-    def calibration_mode(self):
-        pass
+    def sub_last(self):
+        print(self.last_frame)
+        # self.save_cailbration()
+        if self.last_frame == "main":
+            self.start_test()
+        elif self.last_frame == "settings":
+            self.show_setting()
+        else:
+            print("Can not find last")
 
-    def sub_cali(self):
-        self.calibration_mode()
-        self.calibration_bit = False
-        time.sleep(1)
-        self.calibration_ask_frame.hide()
-        self.start_test()
+    def set_cali_weight(self):
+        # print(self.last_frame)
+        if self.lb1_input_sbox.text() != "0" or self.lb2_input_sbox.text() != "0":
+            if self.mainWindow.sender().text() == "Set Left Weight":
+                self.calibrate_sensor_left_max(int(self.lb1_input_sbox.text()))
+                self.calibration_bit_left = False
+                #self.set_left_slope()
+                self.sensor1_set_btn.hide()
+                self.lb1_input_sbox.hide()
+            elif self.mainWindow.sender().text() == "Set Right Weight":
+                self.calibrate_sensor_right_max(int(self.lb2_input_sbox.text()))
+                self.calibration_bit_right = False
+                #self.set_right_slope()
+                self.sensor2_set_btn.hide()
+                self.lb2_input_sbox.hide()
+        else:
+            self.pop_message("OK", "Need to change Weight")
+            print("Not Set")
 
-    def sub_sal(self):
-        self.check_box_state_update()
-        self.salinity_bit = False
-        time.sleep(1)
-        self.salinity_ask_frame.hide()
-        self.start_test()
+    def set_tare(self):
+        if self.mainWindow.sender().text() == "Tare Left":
+            self.calibrate_sensor_left_min()
+            self.sensor1_tare_btn.hide()
+        elif self.mainWindow.sender().text() == "Tare Right":
+            self.calibrate_sensor_right_min()
+            self.sensor2_tare_btn.hide()
+        else:
+            print("Not Set")
 
     def set_salinity_state(self):
-        self.salinity_cbox.setEnabled(self.ask_for_salinity_state)
+        self.v_adj_cbox.setEnabled(self.variable_ask_state)
         self.foam_cbox.setEnabled(self.foam_state)
-        self.save_cailbration.setEnabled(self.foam_state)
-
-        self.salinity_mode_1.setEnabled(self.deep)
-        self.salinity_mode_2.setEnabled(self.fresh)
-        self.salinity_mode_3.setEnabled(self.coastal)
-        self.salinity_mode_4.setEnabled(self.other)
-
-        self.salinity_mode_8.setEnabled(self.deep)
-        self.salinity_mode_6.setEnabled(self.fresh)
-        self.salinity_mode_5.setEnabled(self.coastal)
-        self.salinity_mode_7.setEnabled(self.other)
+        self.save_cailbration.setEnabled(self.save_calibration_state)
 
     def check_box_state_update(self):
-        self.ask_for_salinity_state = self.salinity_cbox.isChecked()
+        self.variable_ask_state = self.v_adj_cbox.setEnabled.isChecked()
         self.foam_state = self.foam_cbox.isChecked()
         self.save_calibration_state = self.save_cailbration.isChecked()
-
-        self.deep = self.salinity_mode_1.isChecked()
-        self.fresh = self.salinity_mode_2.isChecked()
-        self.coastal = self.salinity_mode_3.isChecked()
-        self.other = self.salinity_mode_4.isChecked()
-
-        self.deep = self.salinity_mode_8.isChecked()
-        self.fresh = self.salinity_mode_6.isChecked()
-        self.coastal = self.salinity_mode_5.isChecked()
-        self.other = self.salinity_mode_7.isChecked()
-
-        if self.deep:
-            self.current_salinity_level = self.deep_constant
-        if self.fresh:
-            self.current_salinity_level = self.fresh_constant
-        if self.coastal:
-            self.current_salinity_level = self.coastal_constant
-        if self.other:
-            self.current_salinity_level = self.salinity_input_dsbox.text()
 
     @staticmethod
     def screen_calibrate_script():
@@ -176,78 +161,91 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.calibration_progbar.setValue(value)
 
     def show_main_screen(self):
+        self.last_frame = "main"
         self.mainFrame.show()
         self.logFrame.hide()
         self.calibration_ask_frame.hide()
-        self.salinity_ask_frame.hide()
+        self.variable_adj_frame.hide()
         self.loadingFrame.hide()
         self.settingFrame.hide()
 
     def start_test(self):
+        self.last_frame = "main"
         self.mainFrame.hide()
-        if self.calibration_bit:
+        if self.calibration_bit_left or self.calibration_bit_right:
             # Pop Message add next Version
             self.show_calibration_ask()
-        elif self.salinity_bit:
+        elif self.variable_bit:
             # Pop Message add next Version
-            self.show_salinity_ask()
+            self.show_variable_ask()
         else:
             self.show_loading()
 
     def show_calibration_ask(self):
         self.mainFrame.hide()
         self.calibration_ask_frame.show()
-        self.salinity_ask_frame.hide()
+        self.variable_adj_frame.hide()
         self.settingFrame.hide()
         self.logFrame.hide()
         self.loadingFrame.hide()
 
     def show_setting(self):
+        self.last_frame = "settings"
         self.mainFrame.hide()
         self.calibration_ask_frame.hide()
-        self.salinity_ask_frame.hide()
+        self.variable_adj_frame.hide()
         self.settingFrame.show()
         self.logFrame.hide()
         self.loadingFrame.hide()
 
-    def show_salinity_ask(self):
+    def show_variable_ask(self):
         self.mainFrame.hide()
         self.calibration_ask_frame.hide()
-        self.salinity_ask_frame.show()
+        self.variable_adj_frame.show()
         self.settingFrame.hide()
         self.logFrame.hide()
         self.loadingFrame.hide()
 
+    def save_variables(self):
+        print("saving")
+        self.b_engine_x = self.bep_input_dsbox.text()
+        self.density = self.den_input_dsbox.text()
+        self.variable_bit = False
+        self.sub_last()
+
     def show_log(self):
+        self.last_frame = "log"
         self.mainFrame.hide()
         self.logFrame.show()
         self.calibration_ask_frame.hide()
-        self.salinity_ask_frame.hide()
+        self.variable_adj_frame.hide()
         self.loadingFrame.hide()
         self.settingFrame.hide()
-        # self.print_to_log()
 
     def show_loading(self):
+        self.variable_adj_frame.hide()
+        self.calibration_ask_frame.hide()
+        self.last_frame = "loading"
         self.loadingFrame.show()
         self.update_progress_bar(0)
-        for wait in range(0, 100, 1):
+        for wait in range(0, 200, 1):
             time.sleep(0.01)
             self.update_progress_bar(wait)
         self.show_log()
 
-    def print_to_log(self):
-        pass
-
+    # todo allow quitting
     def admin_state(self):
         pass
 
-    def set_weight(self):
-        pass
-
+    # todo make local host to download calibration settings
     def activate_localhost_download(self):
         pass
 
-    def set_sensor(self):
+    # todo finish setters and getter for saving calibration settings
+    def save_settings(self):
+        pass
+
+    def read_settings(self):
         pass
 
 
