@@ -789,12 +789,12 @@ background-image: url(:/images/gear.png);</string>
     <zorder>label_6</zorder>
     <zorder>label_7</zorder>
    </widget>
-   <zorder>loadingFrame</zorder>
-   <zorder>settingFrame</zorder>
-   <zorder>variable_adj_frame</zorder>
    <zorder>logFrame</zorder>
    <zorder>mainFrame</zorder>
    <zorder>calibration_ask_frame</zorder>
+   <zorder>loadingFrame</zorder>
+   <zorder>settingFrame</zorder>
+   <zorder>variable_adj_frame</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
