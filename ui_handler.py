@@ -93,7 +93,7 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.get_data_btn.hide()
 
     def sub_last(self):
-        print(self.last_frame)
+        # print(self.last_frame)
         # self.save_cailbration()
         if self.last_frame == "main":
             self.start_test()
@@ -108,17 +108,17 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
             if self.mainWindow.sender().text() == "Set Left Weight":
                 self.calibrate_sensor_left_max(int(self.lb1_input_sbox.text()))
                 self.calibration_bit_left = False
-                #self.set_left_slope()
+                self.set_left_slope()
                 self.sensor1_set_btn.hide()
                 self.lb1_input_sbox.hide()
             elif self.mainWindow.sender().text() == "Set Right Weight":
                 self.calibrate_sensor_right_max(int(self.lb2_input_sbox.text()))
                 self.calibration_bit_right = False
-                #self.set_right_slope()
+                self.set_right_slope()
                 self.sensor2_set_btn.hide()
                 self.lb2_input_sbox.hide()
         else:
-            self.pop_message("OK", "Need to change Weight")
+            # self.pop_message("OK", "Need to change Weight")
             print("Not Set")
 
     def set_tare(self):
