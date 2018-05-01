@@ -61,6 +61,10 @@ class Balance(ExtraUiFunctions):
         self.t_volume = self.n_volume + (self.pi*self.b_engine_radius^2*(self.b_engine_x*0.0275))
         self.f_b = self.density * self.gravity * self.t_volume
 
+    def to_string(self):
+        left = self.get_left_weight()
+        right = self.get_right_weight()
+        return "Aft: ", left, " Fore: ", right
     # ------------------------------------------------------------------------------------------------------------------
 
     # ------------------------------------------------------------------------------------------------------------------

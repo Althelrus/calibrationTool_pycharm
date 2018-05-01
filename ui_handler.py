@@ -4,7 +4,8 @@
 # Import of basic System Functions
 import sys
 import os
-import time
+import time, sched
+from threading import Timer
 import logging
 import subprocess
 from PyQt5 import QtGui
@@ -88,6 +89,9 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.save_calibration_state = True
         self.foam_state = False
 
+        # Thread
+        self.t = Timer(2.0, self.print_to_log)
+
         # TODO Coming Soon
         self.admin_btn.hide()
         self.get_data_btn.hide()
@@ -161,6 +165,7 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.calibration_progbar.setValue(value)
 
     def show_main_screen(self):
+        self.t.cancel()
         self.last_frame = "main"
         self.mainFrame.show()
         self.logFrame.hide()
@@ -214,6 +219,7 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.sub_last()
 
     def show_log(self):
+        self.t.start()
         self.last_frame = "log"
         self.mainFrame.hide()
         self.logFrame.show()
@@ -221,6 +227,11 @@ class UIHandler(Ui_MainWindow, Balance, ExtraUiFunctions):
         self.variable_adj_frame.hide()
         self.loadingFrame.hide()
         self.settingFrame.hide()
+
+
+    def print_to_log(self):
+        if self.last_frame == "log":
+            self.weight_edit_log.addItem(self.to_string())
 
     def show_loading(self):
         self.variable_adj_frame.hide()
